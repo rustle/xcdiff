@@ -26,11 +26,6 @@ final class SourcesComparatorTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testTag() {
-        // When / Then
-        XCTAssertEqual(subject.tag, Comparators.Tags.sources)
-    }
-
     func testCompare_sameSources_allTargets() throws {
         // Given
         let first = project(name: "P1")
@@ -141,7 +136,7 @@ final class SourcesComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            CompareResult(tag: Comparators.Tags.sources,
+            CompareResult(tag: Comparators.sources().tag,
                           context: ["\"T1\" target"],
                           description: nil,
                           onlyInFirst: ["D.cpp"],
@@ -170,7 +165,7 @@ final class SourcesComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            CompareResult(tag: Comparators.Tags.sources,
+            CompareResult(tag: Comparators.sources().tag,
                           context: ["\"T1\" target"],
                           description: nil,
                           onlyInFirst: [],
@@ -187,7 +182,7 @@ final class SourcesComparatorTests: XCTestCase {
 
     private func noDifference(targets: [String] = []) -> [CompareResult] {
         return targets.map {
-            CompareResult(tag: Comparators.Tags.sources,
+            CompareResult(tag: Comparators.sources().tag,
                           context: ["\"\($0)\" target"],
                           description: nil,
                           onlyInFirst: [],

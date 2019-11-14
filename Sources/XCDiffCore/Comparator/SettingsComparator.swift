@@ -19,7 +19,7 @@ import PathKit
 import XcodeProj
 
 final class SettingsComparator: Comparator {
-    let tag = Comparators.Tags.settings
+    let tag = "settings"
 
     private let targetHelper = TargetsHelper()
     private let settingsHelper = SettingsHelper()

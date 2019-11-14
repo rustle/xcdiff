@@ -21,7 +21,7 @@ import XcodeProj
 final class ResolvedSettingsComparator: Comparator {
     private typealias TargetProjectTuple = (target: PBXTarget, projectDescriptor: ProjectDescriptor)
 
-    let tag = Comparators.Tags.resolvedSettings
+    let tag = "resolved_settings"
 
     private let targetHelper = TargetsHelper()
     private let settingsHelper = SettingsHelper()

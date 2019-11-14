@@ -29,11 +29,6 @@ final class SettingsComparatorTests: XCTestCase {
         subject = SettingsComparator()
     }
 
-    func testTag() {
-        // When / Then
-        XCTAssertEqual(subject.tag, Comparators.Tags.settings)
-    }
-
     func testCompare_whenNoSettings_noDifference() throws {
         // Given
         let first = project()
@@ -68,9 +63,9 @@ final class SettingsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Release\" configuration", "Base configuration"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Release\" configuration", "Values"]),
         ])
     }
@@ -95,14 +90,14 @@ final class SettingsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Release\" configuration", "Base configuration"],
                   differentValues: [
                       .init(context: "Path to .xcconfig",
                             first: "BaseRelease.xcconfig",
                             second: "BaseRelease_NEW.xcconfig"),
                   ]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Release\" configuration", "Values"]),
         ])
     }
@@ -127,9 +122,9 @@ final class SettingsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Release\" configuration", "Base configuration"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Release\" configuration", "Values"],
                   onlyInFirst: ["B"],
                   onlyInSecond: ["C"],
@@ -163,13 +158,13 @@ final class SettingsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Release\" configuration", "Base configuration"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Release\" configuration", "Values"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["\"Target\" target", "\"Release\" configuration", "Base configuration"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["\"Target\" target", "\"Release\" configuration", "Values"]),
         ])
     }
@@ -200,18 +195,18 @@ final class SettingsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Release\" configuration", "Base configuration"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Release\" configuration", "Values"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["\"Target\" target", "\"Release\" configuration", "Base configuration"],
                   differentValues: [
                       .init(context: "Path to .xcconfig",
                             first: "BaseRelease.xcconfig",
                             second: "BaseRelease_NEW.xcconfig"),
                   ]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["\"Target\" target", "\"Release\" configuration", "Values"]),
         ])
     }
@@ -242,13 +237,13 @@ final class SettingsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Release\" configuration", "Base configuration"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Release\" configuration", "Values"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["\"Target\" target", "\"Release\" configuration", "Base configuration"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["\"Target\" target", "\"Release\" configuration", "Values"],
                   onlyInFirst: ["B"],
                   onlyInSecond: ["C"],
@@ -322,13 +317,13 @@ final class SettingsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Debug\" configuration", "Base configuration"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Debug\" configuration", "Values"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["\"Target\" target", "\"Debug\" configuration", "Base configuration"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["\"Target\" target", "\"Debug\" configuration", "Values"],
                   onlyInFirst: ["DEBUG_B"],
                   onlyInSecond: ["DEBUG_C"],
@@ -354,11 +349,11 @@ final class SettingsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Debug\" configuration", "Base configuration"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Debug\" configuration", "Values"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["\"Target\" target", "\"Debug\" configuration"],
                   onlyInSecond: ["\"Debug\" configuration"]),
         ])
@@ -382,11 +377,11 @@ final class SettingsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Debug\" configuration", "Base configuration"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Debug\" configuration", "Values"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["\"Target\" target", "\"Debug\" configuration"],
                   onlyInFirst: ["\"Debug\" configuration"]),
         ])
@@ -408,11 +403,11 @@ final class SettingsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Debug\" configuration", "Base configuration"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["Root project", "\"Debug\" configuration", "Values"]),
-            .init(tag: Comparators.Tags.settings,
+            .init(tag: Comparators.settings().tag,
                   context: ["\"Target\" target", "\"Debug\" configuration"]),
         ])
     }

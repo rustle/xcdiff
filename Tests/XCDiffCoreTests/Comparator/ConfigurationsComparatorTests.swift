@@ -27,11 +27,6 @@ final class ConfigurationsComparatorTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testTag() {
-        // When / Then
-        XCTAssertEqual(subject.tag, Comparators.Tags.configurations)
-    }
-
     func test_whenNoConfigurations() throws {
         // Given
         let first = project()
@@ -44,7 +39,7 @@ final class ConfigurationsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.configurations, context: ["Root project"]),
+            .init(tag: Comparators.configurations().tag, context: ["Root project"]),
         ])
     }
 
@@ -64,7 +59,7 @@ final class ConfigurationsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.configurations, context: ["Root project"]),
+            .init(tag: Comparators.configurations().tag, context: ["Root project"]),
         ])
     }
 
@@ -83,7 +78,7 @@ final class ConfigurationsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.configurations, context: ["Root project"], onlyInFirst: ["Release"]),
+            .init(tag: Comparators.configurations().tag, context: ["Root project"], onlyInFirst: ["Release"]),
         ])
     }
 
@@ -102,7 +97,7 @@ final class ConfigurationsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.configurations, context: ["Root project"], onlyInSecond: ["Release"]),
+            .init(tag: Comparators.configurations().tag, context: ["Root project"], onlyInSecond: ["Release"]),
         ])
     }
 
@@ -122,7 +117,7 @@ final class ConfigurationsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.configurations, context: ["Root project"]),
+            .init(tag: Comparators.configurations().tag, context: ["Root project"]),
         ])
     }
 }

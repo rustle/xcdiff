@@ -17,18 +17,6 @@
 import Foundation
 
 public struct Comparators {
-    public struct Tags {
-        public static let fileReferences = "file_references"
-        public static let targets = "targets"
-        public static let headers = "headers"
-        public static let sources = "sources"
-        public static let resources = "resources"
-        public static let configurations = "configurations"
-        public static let settings = "settings"
-        public static let resolvedSettings = "resolved_settings"
-        public static let sourceTrees = "source_trees"
-        public static let dependencies = "dependencies"
-    }
     public static let fileReferences: () -> Comparator = { FileReferencesComparator() }
     public static let targets: () -> Comparator = { TargetsComparator() }
     public static let headers: () -> Comparator = { HeadersComparator() }

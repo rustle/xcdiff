@@ -27,11 +27,6 @@ final class SourceTreesComparatorTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testTag() {
-        // When / Then
-        XCTAssertEqual(subject.tag, Comparators.Tags.sourceTrees)
-    }
-
     func testCompare_whenHaveNoTargetsAndNoFiles() throws {
         // Given
         let first = project()
@@ -44,7 +39,7 @@ final class SourceTreesComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.sourceTrees,
+            .init(tag: Comparators.sourceTrees().tag,
                   context: ["Root project"],
                   description: "Output format: (<path>, <name>, <source_tree>)"),
         ])
@@ -74,7 +69,7 @@ final class SourceTreesComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.sourceTrees,
+            .init(tag: Comparators.sourceTrees().tag,
                   context: ["Root project"],
                   description: "Output format: (<path>, <name>, <source_tree>)"),
         ])
@@ -104,7 +99,7 @@ final class SourceTreesComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.sourceTrees,
+            .init(tag: Comparators.sourceTrees().tag,
                   context: ["Root project"],
                   description: "Output format: (<path>, <name>, <source_tree>)",
                   onlyInFirst: ["(Path2.swift, nil, <group>) → (nil, Target, <group>) → (nil, nil, nil)"],
@@ -136,7 +131,7 @@ final class SourceTreesComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.sourceTrees,
+            .init(tag: Comparators.sourceTrees().tag,
                   context: ["Root project"],
                   description: "Output format: (<path>, <name>, <source_tree>)",
                   differentValues: [
@@ -171,7 +166,7 @@ final class SourceTreesComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            .init(tag: Comparators.Tags.sourceTrees,
+            .init(tag: Comparators.sourceTrees().tag,
                   context: ["Root project"],
                   description: "Output format: (<path>, <name>, <source_tree>)",
                   differentValues: [

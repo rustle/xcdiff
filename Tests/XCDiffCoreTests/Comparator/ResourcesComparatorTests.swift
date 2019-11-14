@@ -29,11 +29,6 @@ final class ResourcesComparatorTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testTag() {
-        // When / Then
-        XCTAssertEqual(subject.tag, Comparators.Tags.resources)
-    }
-
     func testCompare_sameResources_allTargets() throws {
         // Given
         let first = project(name: "P1")
@@ -144,7 +139,7 @@ final class ResourcesComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            CompareResult(tag: Comparators.Tags.resources,
+            CompareResult(tag: Comparators.resources().tag,
                           context: ["\"T1\" target"],
                           description: nil,
                           onlyInFirst: ["B.png", "C.pdf"],
@@ -157,7 +152,7 @@ final class ResourcesComparatorTests: XCTestCase {
 
     private func noDifference(targets: [String] = []) -> [CompareResult] {
         return targets.map {
-            CompareResult(tag: Comparators.Tags.resources,
+            CompareResult(tag: Comparators.resources().tag,
                           context: ["\"\($0)\" target"],
                           description: nil,
                           onlyInFirst: [],

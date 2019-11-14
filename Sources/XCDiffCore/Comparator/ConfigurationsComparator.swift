@@ -17,7 +17,7 @@
 import Foundation
 
 final class ConfigurationsComparator: Comparator {
-    let tag = Comparators.Tags.configurations
+    let tag = "configurations"
 
     private let targetsHelper = TargetsHelper()
 

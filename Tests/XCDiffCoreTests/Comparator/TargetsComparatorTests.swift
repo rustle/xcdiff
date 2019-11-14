@@ -27,11 +27,6 @@ final class TargetsComparatorTests: XCTestCase {
         sut = TargetsComparator()
     }
 
-    func testTag() {
-        // When / Then
-        XCTAssertEqual(sut.tag, Comparators.Tags.targets)
-    }
-
     func testCompare_whenHaveNoTargets() throws {
         // Given
         let first = project()
@@ -44,8 +39,8 @@ final class TargetsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            CompareResult(tag: Comparators.Tags.targets, context: ["NATIVE targets"]),
-            CompareResult(tag: Comparators.Tags.targets, context: ["AGGREGATE targets"]),
+            CompareResult(tag: Comparators.targets().tag, context: ["NATIVE targets"]),
+            CompareResult(tag: Comparators.targets().tag, context: ["AGGREGATE targets"]),
         ])
     }
 
@@ -63,8 +58,8 @@ final class TargetsComparatorTests: XCTestCase {
 
         // Then
         XCTAssertEqual(actual, [
-            CompareResult(tag: Comparators.Tags.targets, context: ["NATIVE targets"]),
-            CompareResult(tag: Comparators.Tags.targets, context: ["AGGREGATE targets"]),
+            CompareResult(tag: Comparators.targets().tag, context: ["NATIVE targets"]),
+            CompareResult(tag: Comparators.targets().tag, context: ["AGGREGATE targets"]),
         ])
     }
 
@@ -83,11 +78,11 @@ final class TargetsComparatorTests: XCTestCase {
 
         // Then
         let expected = [
-            CompareResult(tag: Comparators.Tags.targets,
+            CompareResult(tag: Comparators.targets().tag,
                           context: ["NATIVE targets"],
                           onlyInFirst: ["A", "C_UPDATED", "D_NEW"],
                           onlyInSecond: ["A_UPDATED", "C", "E_NEW"]),
-            CompareResult(tag: Comparators.Tags.targets,
+            CompareResult(tag: Comparators.targets().tag,
                           context: ["AGGREGATE targets"],
                           onlyInSecond: ["NEW_AGGREGATE"]),
         ]
@@ -111,11 +106,11 @@ final class TargetsComparatorTests: XCTestCase {
 
         // Then
         let expected = [
-            CompareResult(tag: Comparators.Tags.targets,
+            CompareResult(tag: Comparators.targets().tag,
                           context: ["NATIVE targets"],
                           onlyInFirst: ["A"],
                           onlyInSecond: []),
-            CompareResult(tag: Comparators.Tags.targets,
+            CompareResult(tag: Comparators.targets().tag,
                           context: ["AGGREGATE targets"],
                           onlyInFirst: [],
                           onlyInSecond: ["D"]),
@@ -161,7 +156,7 @@ final class TargetsComparatorTests: XCTestCase {
 
         // Then
         let expected = [
-            CompareResult(tag: Comparators.Tags.targets,
+            CompareResult(tag: Comparators.targets().tag,
                           context: ["NATIVE targets"],
                           onlyInFirst: [],
                           onlyInSecond: [],
@@ -173,7 +168,7 @@ final class TargetsComparatorTests: XCTestCase {
                                     first: "com.apple.product-type.bundle.unit-test",
                                     second: "com.apple.product-type.bundle.ui-testing"),
                           ]),
-            CompareResult(tag: Comparators.Tags.targets,
+            CompareResult(tag: Comparators.targets().tag,
                           context: ["AGGREGATE targets"],
                           onlyInFirst: [],
                           onlyInSecond: []),

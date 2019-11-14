@@ -17,7 +17,7 @@
 import Foundation
 
 final class TargetsComparator: Comparator {
-    let tag = Comparators.Tags.targets
+    let tag = "file_references"
     private let targetsHelper = TargetsHelper()
 
     func compare(_ first: ProjectDescriptor,

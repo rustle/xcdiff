@@ -17,7 +17,7 @@
 import Foundation
 
 final class ResourcesComparator: Comparator {
-    let tag = Comparators.Tags.resources
+    let tag = "resources"
     private let targetsHelper = TargetsHelper()
 
     func compare(_ first: ProjectDescriptor,
